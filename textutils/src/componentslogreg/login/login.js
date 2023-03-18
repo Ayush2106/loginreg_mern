@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import axios from 'axios';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 // import{useHistory} from "react-router-dom"
 // import { Navigate } from 'react-router-dom';
 
@@ -11,6 +11,7 @@ function Login({setLoginUser}) {
             password:""
     });
     // })
+    const navigate = useNavigate();
     const handleChange=(e)=>{
         const {name,value}=e.target
         setUser({
@@ -23,6 +24,7 @@ function Login({setLoginUser}) {
         res=>{
           alert(res.data.status)
           setLoginUser(res.data.user);  
+          navigate("/");
         }
         );
 

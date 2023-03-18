@@ -90,13 +90,19 @@ function App() {
     <div>
       <Router>
         <Routes>
-        <Route exact path = "/" element = {<Homepage/>}></Route>
-        <Route  path = "/login" element = {<Login setLoginUser={setLoginUser}/>}></Route>
+        <Route exact path="/" element=
+            {
+              user && user.email ? <Homepage setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
+            } > </Route>
+                <Route  path = "/login" element = {<Login setLoginUser={setLoginUser}/>}></Route>
         <Route  path = "/register" element = {<Register/>}></Route>
 
         </Routes>
       </Router>
-     
+     {
+      console.log(user._id)
+
+     }
     </div>
   )
 }
